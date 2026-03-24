@@ -25,6 +25,7 @@
 ## 📖 Table of Contents
 
 - [Overview](#overview)
+- [Screenshots](#screenshots)
 - [Key Features](#key-features)
 - [Project Structure](#project-structure)
 - [Architecture](#architecture)
@@ -45,6 +46,7 @@
 - [Deployment](#deployment)
 - [Configuration Reference](#configuration-reference)
 - [Performance & Optimizations](#performance--optimizations)
+- [Author](#author)
 - [License](#license)
 
 ---
@@ -648,6 +650,57 @@ All configuration is managed via environment variables (loaded from `.env`). **N
 | **Path Traversal Prevention** | Audio filenames are validated with regex `^audio_[a-f0-9]{8}\.wav$` before serving, preventing directory traversal attacks. |
 | **Rotating Log Files** | Loguru rotates `logs/app.log` at 10 MB with 7-day retention, preventing disk exhaustion in long-running deployments. |
 | **Gemini Skip-Modulation** | When Gemini TTS produces the audio, it handles emotion natively via prompt injection — the post-processing modulation step is skipped entirely, reducing latency and preserving Gemini's natural-sounding output. |
+
+---
+
+## Screenshots
+
+### Web UI — Landing Page
+
+<p align="center">
+  <img src="UI output/output1.png" alt="Empathy Engine Landing Page — Hero section with text input and voice parameter display" width="100%" />
+</p>
+
+> The main interface: a clean dark-navy header with the text input area (left) and real-time voice parameter gauges (right) showing Rate, Pitch, and Volume.
+
+### Web UI — Full Interface (Idle State)
+
+<p align="center">
+  <img src="UI output/output2.png" alt="Full UI layout showing text input, synthesize button, emotion analysis, audio output, and SSML sections" width="100%" />
+</p>
+
+> Complete interface in idle state: Text Input with character counter, Synthesize Voice button, Emotion Analysis panel (defaulting to Neutral), Audio Output with waveform visualizer and audio player, and the SSML code panel.
+
+### Live Output — Joy Detection (Gemini TTS)
+
+<p align="center">
+  <img src="UI output/output3.png" alt="Joy emotion detected with Rate 1.35x, Pitch +4.0st, Volume 1.20 — synthesized via Gemini TTS in 7339ms" width="100%" />
+</p>
+
+> Input: *"Sarah felt a surge of joy when she saw her friend after a long time."* → Detected **Joy** (high intensity) → Voice parameters: **Rate 1.35×, Pitch +4.0st, Volume 1.20** → Synthesized via **Gemini TTS** in 7339 ms.
+
+### Live Output — Sadness Detection with SSML
+
+<p align="center">
+  <img src="UI output/output4.png" alt="Sadness emotion detected at 98% intensity with SSML output showing prosody and emphasis tags" width="100%" />
+</p>
+
+> Input: *"I was excited about the new job but sad to be leaving my friends."* → Detected **Sadness** (98% · high) → Voice parameters: **Rate 0.70×, Pitch −4.0st, Volume 0.75** → Full SSML with `<break time="400ms"/>`, `<prosody>`, and `<emphasis level="reduced">` tags visible.
+
+### Active Model Pipeline & Emotion Breakdown
+
+<p align="center">
+  <img src="UI output/output5.png" alt="Emotion score breakdown showing all 7 emotions and the 4-level model fallback pipeline" width="100%" />
+</p>
+
+> Bottom section showing: full emotion score breakdown (Sadness 98%, Surprise 1%, Joy 1%, etc.) and the **Active Model Pipeline** — j-hartmann (PRIMARY), SamLowe (FALLBACK 1), bhadresh-savani (FALLBACK 2), VADER (FALLBACK 3).
+
+---
+
+## Author
+
+**HARSH KUMAR**  
+📧 harsh.k22@iiits.in
 
 ---
 
