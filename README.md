@@ -359,7 +359,7 @@ Returns the system status, loaded models, and available TTS providers.
 ```json
 {
   "status": "healthy",
-  "elevenlabs_configured": false,
+  "elevenlabs_configured": true,
   "models_loaded": {
     "primary_transformer": true,
     "fallback_transformer": true,
