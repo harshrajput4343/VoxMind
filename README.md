@@ -276,4 +276,5 @@ docker run -p 8000:8000 empathy-engine
 
 ## License
 
-MIT License — Built for the Darvish AI Campus Challenge.
+MIT License — Built by HARSH KUMAR
+
