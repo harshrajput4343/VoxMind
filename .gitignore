@@ -12,8 +12,7 @@ dist/
 build/
 .pytest_cache/
 .mypy_cache/
-outputs/*.wav
-outputs/*.mp3
+
 logs/*.log
 model_cache/
 .DS_Store
