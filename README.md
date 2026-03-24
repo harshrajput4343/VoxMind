@@ -11,7 +11,7 @@
 
 ## Overview
 
-The Empathy Engine is a production-grade AI service built for the **Darvish AI Campus Challenge**. It takes plain text as input, detects the underlying emotion using state-of-the-art transformer models, then generates speech audio with vocal parameters (rate, pitch, volume) modulated to match the detected emotion and intensity.
+Most text-to-speech systems read words. The Empathy Engine understands them — a production-grade AI service that classifies the emotion behind any input text using state-of-the-art transformer models, then synthesizes speech with rate, pitch, and volume dynamically modulated to sound exactly the way the text feels.
 
 **All 4 bonus features are implemented:**
 - 🎭 **B1 — Granular Emotions**: 7 distinct emotions (not just positive/negative)
