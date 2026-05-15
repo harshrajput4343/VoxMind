@@ -18,7 +18,7 @@ google-genai>=0.2.0
 
 # ── Emotion Detection (all free, no keys) ───────────────────────────
 transformers==4.41.0
-torch==2.3.0
+torch>=2.6.0
 vaderSentiment==3.3.2
 
 # ── TTS Engines ─────────────────────────────────────────────────────
