@@ -1,0 +1,21 @@
+.git/
+.gitignore
+.venv/
+venv/
+env/
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.pytest_cache/
+.mypy_cache/
+tests/
+logs/
+model_cache/
+outputs/
+deploy_aws.ps1
+.env
+.env.example
+docker-compose.yml
+render.yaml
+UI output/

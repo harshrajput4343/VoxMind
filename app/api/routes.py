@@ -50,7 +50,7 @@ async def synthesize(body: SynthesisRequest) -> SynthesisResponse:
     1. Validate text input (Pydantic handles this)
     2. Detect emotion + intensity
     3. Retrieve voice parameters from emotion→voice map
-    4. Build SSML string (Bonus B4)
+    4. Build SSML string
     5. Generate raw TTS audio
     6. Modulate audio with voice params (rate, pitch, volume)
     7. Save to outputs/ with UUID filename
@@ -82,7 +82,7 @@ async def synthesize(body: SynthesisRequest) -> SynthesisResponse:
             f"pitch={voice_params.pitch}, vol={voice_params.volume}"
         )
 
-        # ── 3. Build SSML (Bonus B4) ─────────────────────────
+        # ── 3. Build SSML ────────────────────────────────────
         ssml_text = ssml_builder.build(body.text, voice_params)
         voice_params = voice_params.model_copy(update={"ssml": ssml_text})
 

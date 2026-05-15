@@ -8,7 +8,7 @@ Provider hierarchy (best to worst):
   4. pyttsx3               (free, fully offline, always works)
 
 The app works without ANY API keys — gTTS + pyttsx3 cover all scenarios.
-Gemini 2.5 Flash TTS is the "secret weapon" — inject emotion directly into the prompt.
+Gemini 2.5 Flash TTS enables emotion-aware synthesis via prompt injection.
 """
 
 import io
@@ -83,7 +83,7 @@ class GeminiTTSProvider(BaseTTSProvider):
     Gemini 2.5 Flash TTS — PRIMARY provider.
     Free: 10 RPM, 250 requests/day at aistudio.google.com.
     No credit card needed. Emotion-aware via prompt injection.
-    This is the secret weapon — judges will be impressed by the quality.
+    Produces the highest quality emotion-congruent speech output.
     """
 
     name = "Gemini TTS"
@@ -177,7 +177,7 @@ class ElevenLabsProvider(BaseTTSProvider):
     ElevenLabs API — OPTIONAL, highest quality voice.
     Only used if ELEVENLABS_API_KEY is set in .env.
     Free tier: 10,000 characters/month.
-    Supports full SSML <prosody> tags (Bonus B4).
+    Supports full SSML <prosody> tags for vocal modulation.
     """
 
     name = "ElevenLabs"

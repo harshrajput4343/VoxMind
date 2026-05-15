@@ -50,7 +50,7 @@ class VoiceParameters(BaseModel):
     """The intensity level used to look up these parameters."""
 
     ssml: str = ""
-    """SSML string generated for this emotion+intensity combo (Bonus B4)."""
+    """SSML string generated for this emotion+intensity combo."""
 
 
 class SynthesisRequest(BaseModel):

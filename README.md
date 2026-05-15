@@ -53,18 +53,18 @@
 
 ## Overview
 
-The Empathy Engine is a production-grade AI microservice built for the **Darwix AI Campus Challenge**. It implements a complete emotion-aware text-to-speech pipeline: given plain text, the system detects the underlying emotion using state-of-the-art NLP transformer models, maps the detected emotion and its intensity to specific vocal parameters (speech rate, pitch, volume), generates speech audio via a multi-provider TTS stack, and then applies post-processing modulation to produce expressive, emotionally congruent audio output.
+The Empathy Engine is a production-grade AI microservice that implements a complete emotion-aware text-to-speech pipeline: given plain text, the system detects the underlying emotion using state-of-the-art NLP transformer models, maps the detected emotion and its intensity to specific vocal parameters (speech rate, pitch, volume), generates speech audio via a multi-provider TTS stack, and then applies post-processing modulation to produce expressive, emotionally congruent audio output.
 
 The system is designed around **resilience** — every stage of the pipeline employs a multi-level fallback chain, so the application never fails to produce output regardless of network conditions, API availability, or model loading issues.
 
-### Bonus Features Implemented
+### Core Capabilities
 
-| Bonus | Feature | Implementation |
-|-------|---------|----------------|
-| **B1** | 🎭 Granular Emotions | 7 distinct emotions: joy, sadness, anger, fear, disgust, surprise, neutral |
-| **B2** | 📈 Intensity Scaling | 3 intensity levels (low / medium / high) with distinct parameter variants per emotion |
-| **B3** | 🌐 Web Interface | Responsive dark-theme UI with real-time waveform visualizer and audio playback |
-| **B4** | 🔤 SSML Integration | Full `<prosody>`, `<emphasis>`, and `<break>` tag generation per emotion |
+| # | Feature | Implementation |
+|---|---------|----------------|
+| **1** | 🎭 Granular Emotions | 7 distinct emotions: joy, sadness, anger, fear, disgust, surprise, neutral |
+| **2** | 📈 Intensity Scaling | 3 intensity levels (low / medium / high) with distinct parameter variants per emotion |
+| **3** | 🌐 Web Interface | Responsive dark-theme UI with real-time waveform visualizer and audio playback |
+| **4** | 🔤 SSML Integration | Full `<prosody>`, `<emphasis>`, and `<break>` tag generation per emotion |
 
 ---
 
@@ -106,7 +106,7 @@ empathy-engine/
 │   │   ├── emotion_service.py    # 4-level emotion detection with graceful degradation
 │   │   ├── tts_service.py        # 4-provider TTS with abstract base class + fallback chain
 │   │   ├── audio_service.py      # Voice param lookup + pydub/numpy audio modulation
-│   │   └── ssml_builder.py       # SSML markup generation (Bonus B4)
+│   │   └── ssml_builder.py       # SSML markup generation
 │   └── templates/
 │       └── index.html            # Single-page dark-theme web UI (34 KB, fully self-contained)
 ├── tests/                        # Test suite
@@ -170,7 +170,7 @@ The Empathy Engine follows a **linear pipeline architecture** with defensive fal
                             │
                             ▼
 ┌────────────────────────────────────────────────────────────────────────┐
-│              STAGE 3 — SSML Generation (Bonus B4)                      │
+│              STAGE 3 — SSML Generation                                │
 │                                                                        │
 │  SSMLBuilder.build(text, voice_params)                                 │
 │  Generates: <speak>                                                    │
@@ -449,7 +449,7 @@ Returns the system status, loaded models, and available TTS providers.
 | **Disgust** | ↓ Slower pacing shows deliberation/contempt | ↓ Lower pitch conveys disdain | → Near-neutral volume, slightly dampened |
 | **Neutral** | → 1.0× baseline with no modification | → 0 semitones, no shift | → 1.0× baseline |
 
-**Why static, not dynamic?** A lookup table provides deterministic, reproducible behaviour and is trivially testable. Dynamic computation (e.g., linear interpolation on the intensity score) would introduce unpredictability and make the system harder to validate against assessment rubrics.
+**Why static, not dynamic?** A lookup table provides deterministic, reproducible behaviour and is trivially testable. Dynamic computation (e.g., linear interpolation on the intensity score) would introduce unpredictability and make the system harder to validate.
 
 ---
 
@@ -708,4 +708,4 @@ All configuration is managed via environment variables (loaded from `.env`). **N
 
 ## License
 
-MIT License — Built for the **Darwix AI Campus Challenge**.
+MIT License — Built with ❤️ by Harsh Kumar.

@@ -2,10 +2,8 @@
 Audio Service — Vocal Parameter Modulation.
 
 This is where emotion + intensity → actual audio manipulation happens.
-Meets assessment requirement:
-  "The service must programmatically alter at least two distinct vocal
-   parameters of the TTS output."
-  (We alter all three: rate, pitch, volume.)
+Programmatically alters three distinct vocal parameters of the TTS output:
+rate, pitch, and volume.
 
 EMOTION VOICE MAPPING TABLE:
 ┌──────────┬──────────┬──────┬───────┬────────┐
@@ -84,7 +82,7 @@ class AudioService:
         """
         Look up voice parameters from the mapping table.
         Falls back to neutral/medium if emotion+intensity combo not found.
-        Also builds and attaches the SSML string (Bonus B4).
+        Also builds and attaches the SSML string.
 
         Args:
             emotion_result: Detected emotion with intensity label.
@@ -106,7 +104,7 @@ class AudioService:
             logger.warning(f"No mapping for {key}, using neutral defaults")
             params = EMOTION_VOICE_MAPPING[("neutral", "medium")]
 
-        # Attach SSML string for Bonus B4
+        # Attach SSML string
         from app.services.ssml_builder import ssml_builder
         ssml_str = ssml_builder.build("[text]", params)
         return params.model_copy(update={"ssml": ssml_str})

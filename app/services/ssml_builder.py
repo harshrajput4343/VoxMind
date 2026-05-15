@@ -1,14 +1,9 @@
 """
-SSML Builder — Bonus B4 implementation.
+SSML Builder — Speech Synthesis Markup Language generation.
 
-Generates Speech Synthesis Markup Language strings from voice parameters.
-SSML gives advanced control over emphasis, rate, pitch, and pauses.
+Generates SSML strings from voice parameters for advanced prosody control.
+SSML provides fine-grained control over emphasis, rate, pitch, and pauses.
 Used by ElevenLabs (when configured) and as pre-processing hint for gTTS.
-
-Assessment requirement met:
-  "SSML Integration: For advanced control, use Speech Synthesis Markup
-   Language (SSML) to control emphasis, pauses, and phonetics within
-   the text itself."
 """
 
 import math

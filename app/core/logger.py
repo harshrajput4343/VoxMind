@@ -13,9 +13,16 @@ from pathlib import Path
 # Remove default handler
 logger.remove()
 
-# Console handler — coloured
+# Console handler — coloured, UTF-8 safe on Windows
+import io as _io
+_safe_stdout = _io.TextIOWrapper(
+    sys.stdout.buffer,
+    encoding="utf-8",
+    errors="replace",
+    line_buffering=True,
+)
 logger.add(
-    sys.stdout,
+    _safe_stdout,
     format="<green>{time:YYYY-MM-DD HH:mm:ss}</green> | <level>{level: <8}</level> | <cyan>{module}</cyan> | {message}",
     level="DEBUG",
     colorize=True,
