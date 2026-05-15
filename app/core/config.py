@@ -32,7 +32,7 @@ class Settings(BaseSettings):
     model_cache_dir: str = "model_cache"
     max_text_length: int = 500
 
-    model_config = {"env_file": ".env", "env_file_encoding": "utf-8"}
+    model_config = {"env_file": ".env", "env_file_encoding": "utf-8", "protected_namespaces": ()}
 
     @computed_field
     @property
