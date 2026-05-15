@@ -393,10 +393,10 @@ Returns the system status, loaded models, and available TTS providers.
 ### Live Output — Joy Detection (Gemini TTS)
 
 <p align="center">
-  <img src="outputs/UI output/output3.png" alt="Joy emotion detected with Rate 1.35x, Pitch +4.0st, Volume 1.20 — synthesized via Gemini TTS in 7339ms" width="100%" />
+  <img src="outputs/UI output/output3.png" alt="Joy emotion detected with Rate 1.35x, Pitch +4.0st, Volume 1.20 — synthesized via Gemini TTS" width="100%" />
 </p>
 
-> Input: *"Sarah felt a surge of joy when she saw her friend after a long time."* → Detected **Joy** (high intensity) → Voice parameters: **Rate 1.35×, Pitch +4.0st, Volume 1.20** → Synthesized via **Gemini TTS** in 7339 ms.
+> Input: *"I am feeling wonderful today!"* → Detected **Joy** (99% · high) → Voice parameters: **Rate 1.35×, Pitch +4.0st, Volume 1.20** → Synthesized via **Gemini TTS** in 7857 ms.
 
 ### Live Output — Sadness Detection with SSML
 
@@ -404,7 +404,7 @@ Returns the system status, loaded models, and available TTS providers.
   <img src="outputs/UI output/output4.png" alt="Sadness emotion detected at 98% intensity with SSML output showing prosody and emphasis tags" width="100%" />
 </p>
 
-> Input: *"I was excited about the new job but sad to be leaving my friends."* → Detected **Sadness** (98% · high) → Voice parameters: **Rate 0.70×, Pitch −4.0st, Volume 0.75** → Full SSML with `<break time="400ms"/>`, `<prosody>`, and `<emphasis level="reduced">` tags visible.
+> Input: *"I was excited about the new job but sad to be leaving my friends."* → Detected **Sadness** (98% · high) → Voice parameters: **Rate 0.70×, Pitch −4.0st, Volume 0.75** → Synthesized via **Gemini TTS** in 6972 ms. Full SSML with `<break time="400ms"/>`, `<prosody>`, and `<emphasis level="reduced">` tags visible.
 
 ### Active Model Pipeline & Emotion Breakdown
 

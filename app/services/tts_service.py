@@ -143,8 +143,12 @@ class GeminiTTSProvider(BaseTTSProvider):
                 ),
             )
 
-            # Extract audio data from response
+            # Extract audio data from response safely
+            if not response.candidates or not response.candidates[0].content.parts:
+                raise ValueError("Gemini returned no audio candidates")
             audio_data = response.candidates[0].content.parts[0].inline_data.data
+            if not audio_data:
+                raise ValueError("Gemini returned empty audio data")
 
             # Gemini returns raw PCM audio — write as WAV
             self._write_wav(audio_data, output_path)
@@ -330,16 +334,17 @@ class TTSService:
 
     def __init__(self) -> None:
         """Initialise providers based on environment."""
+        self.providers: list[BaseTTSProvider] = []
         if settings.is_development():
             # Development mode: Unlimited free providers only to save restricted API quotas
-            self.providers: list[BaseTTSProvider] = [
+            self.providers = [
                 GTTSProvider(),
                 Pyttsx3Provider(),
             ]
             logger.info("TTSService initialized in DEV mode (saving API quotas)")
         else:
             # Production/Demo mode: Full premium stack with offline fallbacks
-            self.providers: list[BaseTTSProvider] = [
+            self.providers = [
                 GeminiTTSProvider(),
                 ElevenLabsProvider(),
                 GTTSProvider(),

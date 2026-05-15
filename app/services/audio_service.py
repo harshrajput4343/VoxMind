@@ -146,7 +146,7 @@ class AudioService:
         # ── Step 1: Rate (speed) change ──────────────────────
         if params.rate != 1.0:
             new_rate = int(original_frame_rate * params.rate)
-            audio = audio._spawn(audio.raw_data, overrides={"frame_rate": new_rate})
+            audio = audio._spawn(audio.raw_data, overrides={"frame_rate": new_rate})  # type: ignore
             audio = audio.set_frame_rate(original_frame_rate)
             logger.debug(f"Rate applied: {params.rate}x → frame_rate trick done")
 
@@ -159,7 +159,7 @@ class AudioService:
                 indices = np.linspace(0, len(samples) - 1, new_length)
                 pitched = np.interp(indices, np.arange(len(samples)), samples)
                 pitched = pitched.astype(np.int16)
-                audio = audio._spawn(
+                audio = audio._spawn(  # type: ignore
                     pitched.tobytes(),
                     overrides={
                         "frame_rate": original_frame_rate,

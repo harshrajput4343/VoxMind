@@ -16,7 +16,7 @@ logger.remove()
 # Console handler — coloured, UTF-8 safe on Windows
 import io as _io
 _safe_stdout = _io.TextIOWrapper(
-    sys.stdout.buffer,
+    getattr(sys.stdout, "buffer", sys.stdout),
     encoding="utf-8",
     errors="replace",
     line_buffering=True,
