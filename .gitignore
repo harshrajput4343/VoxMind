@@ -19,3 +19,6 @@ model_cache/
 Thumbs.db
 *.idea/
 .vscode/
+
+# Deployment scripts (may contain local credentials)
+deploy_aws.ps1
