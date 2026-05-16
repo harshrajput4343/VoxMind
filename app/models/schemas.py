@@ -27,6 +27,8 @@ class EmotionResult(BaseModel):
     model_used: str
     """Which model/library produced this result."""
 
+    model_config = {"protected_namespaces": ()}
+
     intensity_label: str
     """Human-readable intensity: 'low' | 'medium' | 'high'."""
 
