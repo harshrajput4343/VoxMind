@@ -4,32 +4,22 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Voxmind — Emotion-Aware AI Voice Synthesis</title>
-    <meta name="description" content="Give your AI a Soul with emotion-aware voice synthesis.">
-
-    <!-- Fonts -->
+    <title>Empathy Engine — Emotion-Aware Voice Synthesis</title>
+    <meta name="description" content="AI-powered emotion detection and voice synthesis.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,600;1,600&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
-
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,600;1,600&family=JetBrains+Mono:wght@500;600&display=swap"
+        rel="stylesheet">
     <style>
         :root {
-            --primary: #003d9b;
-            --primary-light: #0052cc;
-            --primary-container: #dae2ff;
             --bg: #f8fafc;
             --surface: #ffffff;
-            --surface-container: #edeef0;
-            --text-heading: #172B4D;
-            --text-body: #42526E;
             --text-main: #0f172a;
             --text-sec: #64748b;
-            --border: #DFE1E6;
-            --border-hover: #0052cc;
+            --border: #e2e8f0;
             --border-heavy: #cbd5e1;
-            --success: #36B37E;
-            --error: #F43F5E;
-            
+
             --blue-50: #eff6ff;
             --blue-100: #dbeafe;
             --blue-500: #3b82f6;
@@ -37,190 +27,127 @@
             --blue-700: #1d4ed8;
 
             --green-500: #22c55e;
+            --yellow-500: #eab308;
+            --red-500: #ef4444;
+            --purple-500: #a855f7;
 
-            --radius: 8px;
+            --radius-sm: 8px;
             --radius-md: 12px;
             --radius-lg: 20px;
-            
-            --shadow-sm: 0px 1px 3px rgba(0, 0, 0, 0.1);
-            --shadow-md: 0px 4px 12px rgba(9, 30, 66, 0.15);
-            --transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+            --radius-xl: 24px;
 
-            /* Emotion Colors */
-            --joy: #36B37E;
-            --sadness: #0747A6;
-            --anger: #BF2600;
-            --fear: #6554C0;
-            --surprise: #00B8D9;
-            --neutral: #6B778C;
-            --disgust: #FF8B00;
-            
-            --color-joy: #eab308;
-            --bg-joy: #eab308;
-            --em-bg-joy: #fef9c3;
-            
-            --color-sadness: #3b82f6;
-            --bg-sadness: #3b82f6;
-            --em-bg-sadness: #eff6ff;
-            
-            --color-anger: #ef4444;
-            --bg-anger: #ef4444;
-            --em-bg-anger: #fef2f2;
-            
-            --color-fear: #a855f7;
-            --bg-fear: #a855f7;
-            --em-bg-fear: #faf5ff;
-            
-            --color-surprise: #14b8a6;
-            --bg-surprise: #14b8a6;
-            --em-bg-surprise: #f0fdfa;
-            
-            --color-neutral: #94a3b8;
-            --bg-neutral: #94a3b8;
-            --em-bg-neutral: #f1f5f9;
-            
-            --color-disgust: #16a34a;
-            --bg-disgust: #16a34a;
-            --em-bg-disgust: #f0fdf4;
+            --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.05);
+            --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -2px rgba(0, 0, 0, 0.05);
+            --transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            scroll-behavior: smooth;
         }
 
         body {
-            font-family: 'Inter', sans-serif;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
             background-color: var(--bg);
-            color: var(--text-body);
-            line-height: 1.5;
+            color: var(--text-main);
+            min-height: 100vh;
             -webkit-font-smoothing: antialiased;
-            overflow-x: hidden;
             padding-bottom: 80px;
         }
 
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 24px;
-        }
-
-        /* Navbar */
+        /* Nav */
         nav {
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-            background: var(--surface);
-            border-bottom: 1px solid var(--border);
-            padding: 0 32px;
-            height: 64px;
             display: flex;
             align-items: center;
             justify-content: space-between;
+            padding: 16px 32px;
+            background: var(--surface);
+            border-bottom: 1px solid var(--border);
         }
 
-        .nav-left {
+        .nav-logo {
             display: flex;
             align-items: center;
-            gap: 32px;
-        }
-
-        .logo {
+            gap: 12px;
             font-weight: 700;
-            color: var(--primary);
-            font-size: 20px;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            text-decoration: none;
-        }
-
-        .logo-icon {
-            background: var(--primary);
-            color: white;
-            width: 28px;
-            height: 28px;
-            border-radius: 6px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
             font-size: 16px;
         }
 
-        .nav-links {
+        .nav-logo-icon {
+            width: 28px;
+            height: 28px;
+            background: var(--blue-600);
+            border-radius: 8px;
             display: flex;
-            gap: 24px;
-            list-style: none;
-        }
-
-        .nav-links a {
-            color: var(--text-body);
-            text-decoration: none;
-            font-size: 14px;
-            font-weight: 500;
-            transition: var(--transition);
-        }
-
-        .nav-links a:hover {
-            color: var(--primary);
-        }
-
-        .btn {
-            padding: 8px 16px;
-            border-radius: var(--radius);
-            font-size: 14px;
-            font-weight: 600;
-            cursor: pointer;
-            transition: var(--transition);
-            border: none;
-            text-decoration: none;
-        }
-
-        .btn-primary {
-            background: var(--primary);
+            align-items: center;
+            justify-content: center;
             color: white;
+            font-size: 14px;
         }
 
-        .btn-primary:hover {
-            background: var(--primary-light);
+        .nav-center {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 11px;
+            font-weight: 600;
+            color: var(--blue-600);
+            background: var(--blue-50);
+            padding: 6px 16px;
+            border-radius: 20px;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
         }
 
-        /* Hero section */
-        #landing-view {
+        .nav-right {
+            display: flex;
+            gap: 8px;
+        }
+
+        .pill {
+            font-family: 'Inter', sans-serif;
+            font-size: 12px;
+            color: var(--text-sec);
+            background: var(--bg);
+            border: 1px solid var(--border);
+            padding: 6px 12px;
+            border-radius: 20px;
+        }
+
+        /* Hero */
+        .hero {
             text-align: center;
-            padding-top: 100px;
-            padding-bottom: 80px;
-            background: white;
-        }
-
-        .hero-content {
-            max-width: 800px;
+            padding: 64px 24px;
+            max-width: 600px;
             margin: 0 auto;
         }
 
-        .hero-content h1 {
-            font-size: 64px;
-            font-weight: 800;
-            color: var(--text-heading);
-            letter-spacing: -0.03em;
-            line-height: 1.1;
+        .hero-badge {
+            display: inline-block;
+            font-size: 11px;
+            font-weight: 700;
+            color: var(--blue-600);
+            letter-spacing: 0.15em;
             margin-bottom: 24px;
         }
 
-        .hero-content p {
-            font-size: 20px;
-            color: var(--text-body);
-            margin-bottom: 48px;
-            max-width: 640px;
-            margin-left: auto;
-            margin-right: auto;
+        .hero h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 56px;
+            line-height: 1.1;
+            color: #0f172a;
+            margin-bottom: 24px;
+            font-weight: 600;
         }
 
-        /* App section */
-        #app-section {
-            padding-top: 60px;
+        .hero h1 i {
+            color: var(--blue-600);
+            font-style: italic;
+        }
+
+        .hero p {
+            font-size: 16px;
+            color: var(--text-sec);
+            line-height: 1.6;
         }
 
         /* Layout Grid */
@@ -374,7 +301,9 @@
         }
 
         @keyframes spin {
-            to { transform: rotate(360deg); }
+            to {
+                transform: rotate(360deg);
+            }
         }
 
         /* Emotion Analysis */
@@ -578,8 +507,13 @@
         }
 
         @keyframes wave {
-            0% { height: 10%; }
-            100% { height: 80%; }
+            0% {
+                height: 10%;
+            }
+
+            100% {
+                height: 80%;
+            }
         }
 
         .player-controls {
@@ -793,7 +727,7 @@
             line-height: 1.4;
         }
 
-        /* Errors */
+        /* Errors / Skeletons display toggling */
         .hidden {
             display: none !important;
         }
@@ -808,169 +742,240 @@
             margin-bottom: 24px;
             display: none;
         }
+
+        /* Color classes map */
+        .color-joy {
+            color: #eab308;
+        }
+
+        .bg-joy {
+            background: #eab308;
+        }
+
+        .color-sadness {
+            color: #3b82f6;
+        }
+
+        .bg-sadness {
+            background: #3b82f6;
+        }
+
+        .color-anger {
+            color: #ef4444;
+        }
+
+        .bg-anger {
+            background: #ef4444;
+        }
+
+        .color-fear {
+            color: #a855f7;
+        }
+
+        .bg-fear {
+            background: #a855f7;
+        }
+
+        .color-surprise {
+            color: #14b8a6;
+        }
+
+        .bg-surprise {
+            background: #14b8a6;
+        }
+
+        .color-neutral {
+            color: #94a3b8;
+        }
+
+        .bg-neutral {
+            background: #94a3b8;
+        }
+
+        .color-disgust {
+            color: #16a34a;
+        }
+
+        .bg-disgust {
+            background: #16a34a;
+        }
+
+        .em-bg-joy {
+            background: #fef9c3;
+        }
+
+        .em-bg-sadness {
+            background: #eff6ff;
+        }
+
+        .em-bg-anger {
+            background: #fef2f2;
+        }
+
+        .em-bg-fear {
+            background: #faf5ff;
+        }
+
+        .em-bg-surprise {
+            background: #f0fdfa;
+        }
+
+        .em-bg-neutral {
+            background: #f1f5f9;
+        }
+
+        .em-bg-disgust {
+            background: #f0fdf4;
+        }
     </style>
 </head>
 
 <body>
 
     <nav>
-        <div class="nav-left">
-            <a href="/" class="logo">
-                <div class="logo-icon">V</div>
-                Voxmind
-            </a>
-            <ul class="nav-links">
-                <li><a href="#landing-view">Home</a></li>
-                <li><a href="#app-section">App</a></li>
-            </ul>
+        <div class="nav-logo">
+            <div class="nav-logo-icon">e</div>
+            Empathy Engine
         </div>
+        <div class="nav-center">EMPATHY ENGINE</div>
         <div class="nav-right">
-            <a href="#app-section" class="btn btn-primary">Try It</a>
+            <div class="pill">v1.0.0</div>
+            <div class="pill">FastAPI</div>
         </div>
     </nav>
 
-    <!-- LANDING VIEW -->
-    <div id="landing-view">
-        <section class="container">
-            <div class="hero-content">
-                <h1>Give your AI a Soul.</h1>
-                <p>Voxmind uses high-fidelity emotion detection and multi-model voice synthesis to create speech that resonates with genuine human feeling.</p>
-
-                <div style="margin-top: 32px;">
-                    <a href="#app-section" class="btn btn-primary" style="font-size: 18px; padding: 16px 32px; border-radius: 32px;">Try Voxmind Free</a>
-                </div>
-            </div>
-        </section>
+    <div class="hero">
+        <div class="hero-badge">• AI VOICE SYNTHESIS •</div>
+        <h1>Voice that <i>feels</i><br>what you mean</h1>
+        <p>Paste any text. We detect the emotion, modulate the voice, and speak it back — with genuine feeling.</p>
     </div>
 
-    <!-- APP SECTION -->
-    <div id="app-section">
-        <div class="main-grid">
-            <!-- LEFT COL -->
-            <div class="col-left">
-                <div class="error-banner" id="errorBanner"></div>
+    <div class="main-grid">
 
-                <div class="card" id="editorCard">
-                    <div class="card-title">Text Input</div>
-                    <textarea id="textInput" placeholder="Type something here..."></textarea>
-                    <div class="char-count" id="charCount">0/500</div>
+        <!-- LEFT COL -->
+        <div class="col-left">
+            <div class="error-banner" id="errorBanner"></div>
 
-                    <div class="tone-pills">
-                        <div class="tone-pill active">Auto-detect</div>
-                    </div>
+            <div class="card" id="editorCard">
+                <div class="card-title">Text Input</div>
+                <textarea id="textInput" placeholder="Type something here..."></textarea>
+                <div class="char-count" id="charCount">0/500</div>
 
-                    <button class="btn-submit ready" id="btnSynthesize" onclick="synthesize()">
-                        <span class="spinner"></span>
-                        <span class="btn-text">⚡ Synthesize Voice</span>
-                    </button>
+                <div class="tone-pills">
+                    <div class="tone-pill active">Auto-detect</div>
                 </div>
 
-                <!-- Emotion Analysis -->
-                <div class="card">
-                    <div class="card-title">Emotion Analysis</div>
-
-                    <div class="emotion-hero" id="emotionWrapper">
-                        <div class="em-icon em-bg-neutral" id="emIcon">😐</div>
-                        <div>
-                            <div class="em-title color-neutral" id="emTitle">Neutral</div>
-                            <div class="em-model" id="emModel">awaiting input...</div>
-                        </div>
-                    </div>
-
-                    <div class="intensity-row">
-                        <span>Intensity Score</span>
-                        <span class="intensity-val color-neutral" id="intLabel">0%</span>
-                    </div>
-                    <div class="progress-bar-thick" id="intTrack">
-                        <div class="progress-fill-thick bg-neutral" id="intBar" style="width: 0%;"></div>
-                    </div>
-
-                    <div class="scores-list" id="scoresList">
-                        <!-- Javascript injected rows -->
-                    </div>
-                </div>
+                <button class="btn-submit ready" id="btnSynthesize" onclick="synthesize()">
+                    <span class="spinner"></span>
+                    <span class="btn-text">⚡ Synthesize Voice</span>
+                </button>
             </div>
 
-            <!-- RIGHT COL -->
-            <div class="col-right">
-                <div class="card">
-                    <div class="card-title">Voice Parameters</div>
-                    <div class="params-row">
-                        <div class="param-box">
-                            <div class="val" id="valRate">-.--<small>x</small></div>
-                            <div class="lbl">Rate</div>
-                        </div>
-                        <div class="param-box">
-                            <div class="val" id="valPitch">-.--<small>st</small></div>
-                            <div class="lbl">Pitch</div>
-                        </div>
-                        <div class="param-box">
-                            <div class="val" id="valVol">-.--</div>
-                            <div class="lbl" style="color:#64748b;">Volume</div>
-                        </div>
-                    </div>
-                    <div class="tts-meta">
-                        <div class="tts-badge">
-                            <div class="tts-dot"></div> Synthesized via <span id="ttsProvider">---</span>
-                        </div>
-                        <div class="ms-pill"><span id="ttsTime">---</span> ms</div>
+            <!-- Emotion Analysis -->
+            <div class="card">
+                <div class="card-title">Emotion Analysis</div>
+
+                <div class="emotion-hero" id="emotionWrapper">
+                    <div class="em-icon em-bg-neutral" id="emIcon">😐</div>
+                    <div>
+                        <div class="em-title color-neutral" id="emTitle">Neutral</div>
+                        <div class="em-model" id="emModel">awaiting input...</div>
                     </div>
                 </div>
 
-                <div class="card">
-                    <div class="card-title">Audio Output</div>
-                    <div class="waveform-mock" id="waveform">
-                        <!-- bars -->
-                    </div>
-                    <div class="player-controls">
-                        <button class="play-btn" id="playBtn" onclick="togglePlay()">▶</button>
-                        <div class="scrubber-wrap">
-                            <div class="scrubber" id="scrubber" onclick="seek(event)">
-                                <div class="scrubber-fill" id="scrubberFill"></div>
-                            </div>
-                            <div class="time-labels">
-                                <span id="timeCurr">0:00</span>
-                                <span id="timeDur">0:00</span>
-                            </div>
-                        </div>
-                    </div>
-                    <a href="#" class="download-btn" id="dlBtn" download>↓ Download Audio</a>
+                <div class="intensity-row">
+                    <span>Intensity Score</span>
+                    <span class="intensity-val color-neutral" id="intLabel">0%</span>
+                </div>
+                <div class="progress-bar-thick" id="intTrack">
+                    <div class="progress-fill-thick bg-neutral" id="intBar" style="width: 0%;"></div>
                 </div>
 
-                <div class="card ssml-card">
-                    <div class="ssml-head">
-                        SSML
-                        <button class="copy-btn">Copy</button>
-                    </div>
-                    <div class="ssml-code" id="ssmlCode">Awaiting generation...</div>
+                <div class="scores-list" id="scoresList">
+                    <!-- Javascript injected rows -->
                 </div>
             </div>
         </div>
 
-        <!-- Active Models Grid -->
-        <div class="pipeline-section">
-            <div class="pipeline-title">ACTIVE MODEL PIPELINE</div>
-            <div class="pipeline-grid">
-                <div class="pipe-card primary">
-                    <div class="pipe-badge">PRIMARY</div>
-                    <div class="pipe-name">j-hartmann</div>
-                    <div class="pipe-desc">emotion-english-distilroberta-base · 7 emotions</div>
+        <!-- RIGHT COL -->
+        <div class="col-right">
+            <div class="card">
+                <div class="card-title">Voice Parameters</div>
+                <div class="params-row">
+                    <div class="param-box">
+                        <div class="val" id="valRate">-.--<small>x</small></div>
+                        <div class="lbl">Rate</div>
+                    </div>
+                    <div class="param-box">
+                        <div class="val" id="valPitch">-.--<small>st</small></div>
+                        <div class="lbl">Pitch</div>
+                    </div>
+                    <div class="param-box">
+                        <div class="val" id="valVol">-.--</div>
+                        <div class="lbl" style="color:#64748b;">Volume</div>
+                    </div>
                 </div>
-                <div class="pipe-card">
-                    <div class="pipe-badge">FALLBACK 1</div>
-                    <div class="pipe-name">SamLowe</div>
-                    <div class="pipe-desc">roberta-base-go_emotions · 28 emotions</div>
+                <div class="tts-meta">
+                    <div class="tts-badge">
+                        <div class="tts-dot"></div> Synthesized via <span id="ttsProvider">---</span>
+                    </div>
+                    <div class="ms-pill"><span id="ttsTime">---</span> ms</div>
                 </div>
-                <div class="pipe-card">
-                    <div class="pipe-badge">FALLBACK 2</div>
-                    <div class="pipe-name">bhadresh-savani</div>
-                    <div class="pipe-desc">distilbert-base-uncased · 6 emotions</div>
+            </div>
+
+            <div class="card">
+                <div class="card-title">Audio Output</div>
+                <div class="waveform-mock" id="waveform">
+                    <!-- bars -->
                 </div>
-                <div class="pipe-card">
-                    <div class="pipe-badge">FALLBACK 3</div>
-                    <div class="pipe-name">VADER</div>
-                    <div class="pipe-desc">Offline sentiment · Always available</div>
+                <div class="player-controls">
+                    <button class="play-btn" id="playBtn" onclick="togglePlay()">▶</button>
+                    <div class="scrubber-wrap">
+                        <div class="scrubber" id="scrubber" onclick="seek(event)">
+                            <div class="scrubber-fill" id="scrubberFill"></div>
+                        </div>
+                        <div class="time-labels">
+                            <span id="timeCurr">0:00</span>
+                            <span id="timeDur">0:00</span>
+                        </div>
+                    </div>
                 </div>
+                <a href="#" class="download-btn" id="dlBtn" download>↓ Download Audio</a>
+            </div>
+
+            <div class="card ssml-card">
+                <div class="ssml-head">
+                    SSML
+                    <button class="copy-btn">Copy</button>
+                </div>
+                <div class="ssml-code" id="ssmlCode">Awaiting generation...</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Active Models Grid -->
+    <div class="pipeline-section">
+        <div class="pipeline-title">ACTIVE MODEL PIPELINE</div>
+        <div class="pipeline-grid">
+            <div class="pipe-card primary">
+                <div class="pipe-badge">PRIMARY</div>
+                <div class="pipe-name">j-hartmann</div>
+                <div class="pipe-desc">emotion-english-distilroberta-base · 7 emotions</div>
+            </div>
+            <div class="pipe-card">
+                <div class="pipe-badge">FALLBACK 1</div>
+                <div class="pipe-name">SamLowe</div>
+                <div class="pipe-desc">roberta-base-go_emotions · 28 emotions</div>
+            </div>
+            <div class="pipe-card">
+                <div class="pipe-badge">FALLBACK 2</div>
+                <div class="pipe-name">bhadresh-savani</div>
+                <div class="pipe-desc">distilbert-base-uncased · 6 emotions</div>
+            </div>
+            <div class="pipe-card">
+                <div class="pipe-badge">FALLBACK 3</div>
+                <div class="pipe-name">VADER</div>
+                <div class="pipe-desc">Offline sentiment · Always available</div>
             </div>
         </div>
     </div>
